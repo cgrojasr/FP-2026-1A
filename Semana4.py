@@ -42,3 +42,47 @@ def calcular_descuento(monto_compra, numero_papel):
     return descuento
 
 Enunciado_1()
+
+# Una empresa tiene como reglamento dar aumento de sueldo a sus trabajadores todos los años, 
+# el porcentaje de aumento está dado de acuerdo al tipo de trabajador: Gerente (g) o empleado (e). 
+# Los gerentes reciben un aumento del 14% anual y los empleados reciben el 8% anual. 
+# Cada 4 años en vez de 14% reciben 18% y en vez de 8% reciben 12% (dependiendo del tipo de trabajador). 
+# Desarrollar los módulos que determinen el sueldo que tendrá un trabajador después de N años y el porcentaje 
+# de aumento de sueldo que ha obtenido comparando su sueldo original y su sueldo después de N años. 
+# Tenga en cuenta que los aumentos obtenidos van a su sueldo. 
+#  
+# Se le solicita lo siguiente:
+# Calculo del sueldo después de N años					
+# Calcular el porcentaje de aumento después de N años.				
+# Calcular la suma del sueldo de un gerente y de un empleado después de N años. 
+
+def Enunciado_2():
+    sueldo_inicial_gerente = float(input("Ingrese el sueldo inicial del gerente: "))
+    sueldo_inicial_empleado = float(input("Ingrese el sueldo inicial del empleado: "))
+    años = int(input("Ingrese la cantidad de años: "))
+    sueldo_final_gerente = calcular_sueldo_final(sueldo_inicial_gerente, 'g', años)
+    sueldo_final_empleado = calcular_sueldo_final(sueldo_inicial_empleado, 'e', años)
+    porcentaje_aumento_gerente = round(((sueldo_final_gerente - sueldo_inicial_gerente) / sueldo_inicial_gerente) * 100,2)
+    porcentaje_aumento_empleado = round(((sueldo_final_empleado - sueldo_inicial_empleado) / sueldo_inicial_empleado) * 100,2)
+    print(f"El sueldo del gerente después de {años} años es: {sueldo_final_gerente} soles")
+    print(f"El porcentaje de aumento del gerente después de {años} años es: {porcentaje_aumento_gerente}%")
+    print(f"El sueldo del empleado después de {años} años es: {sueldo_final_empleado} soles")
+    print(f"El porcentaje de aumento del empleado después de {años} años es: {porcentaje_aumento_empleado}%")
+    print(f"La suma del sueldo de un gerente y de un empleado después de {años} años es: {sueldo_final_gerente + sueldo_final_empleado} soles")
+
+def calcular_sueldo_final(sueldo_inicial, tipo_trabajador, años):
+    sueldo_final = sueldo_inicial
+    for año in range(1, años + 1, 1):
+        if tipo_trabajador == 'g':
+            if año % 4 == 0:
+                sueldo_final += (18 / 100) * sueldo_final
+            else:
+                sueldo_final += (14 / 100) * sueldo_final
+        elif tipo_trabajador == 'e':
+            if año % 4 == 0:
+                sueldo_final += (12 / 100) * sueldo_final
+            else:
+                sueldo_final += (8 / 100) * sueldo_final
+    return round(sueldo_final, 2) 
+
+# Enunciado_2()
