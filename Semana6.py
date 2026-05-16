@@ -26,20 +26,18 @@ def cantidad_producto_x_pais(codigos):
         pais = codigos[i][0:2]
         # if pais in paises:
         #     paises[pais] += 1
-        if len(paises) == 0:
+        for j in range(len(paises)):
+            if paises[j] == pais:
+                indice_pais = j
+                break
+        
+        if indice_pais == -1:
             paises.append(pais)
             cantidades.append(1)
         else:
-            for j in range(len(paises)):
-                if paises[j] == pais:
-                    indice_pais = j
-                    break
-            if indice_pais == -1:
-                paises.append(pais)
-                cantidades.append(1)
-            else:
-                cantidades[indice_pais] += 1
-                indice_pais = -1
+            cantidades[indice_pais] += 1
+            indice_pais = -1
+
     print("Cantidad de productos vendidos por país:")
     for i in range(len(paises)):
         print(f"{paises[i]}: {cantidades[i]} productos")
@@ -55,13 +53,15 @@ def ultimo_correlativo(codigos):
             if paises[j] == codigo_pais:
                 indice_pais = j
                 break
+        
         if indice_pais == -1:
             paises.append(codigo_pais)
             correlativos.append(int(correlativo))
+            
         else:
             if correlativos[indice_pais] < int(correlativo):
                 correlativos[indice_pais] = int(correlativo)
-                indice_pais = -1
+            indice_pais = -1
     
     for i in range(len(paises)):
         print(f"El último correlativo registrado para el país {paises[i]} es: {correlativos[i]}")
@@ -91,3 +91,11 @@ def monto_almacenaje_por_pais(codigos):
         print(f"{paises[i]}: {montos[i]} soles de almacenaje")
 
 Enunciado_S6()
+# PE000303
+# PE000101
+# PE009999
+# AR002020
+# AR001919
+# AR000101
+# BR009999
+# BR001010
