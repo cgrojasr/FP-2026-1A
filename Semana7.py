@@ -26,6 +26,51 @@ def cantidad_digitos_repetidos(numero, digito):
     cantidad = numero.count(digito)
     print(f"La cantidad de dígitos {digito} en la cadena es: {cantidad}")
 
-Ejercicio1()
+# Ejercicio1()
 
+# Una empresa tiene como reglamento dar aumento de sueldo a sus trabajadores todos los años, 
+# el porcentaje de aumento está dado de acuerdo con el tipo de trabajador: Gerente (g) o empleado (e). 
+# Los gerentes reciben un aumento del 14% anual y los empleados reciben el 8% anual. 
+# Cada 4 años en vez de 14% reciben 18% y en vez de 8% reciben 12% (dependiendo del tipo de trabajador). 
+# Desarrollar los módulos que determinen el sueldo que tendrá un trabajador después de N años y el porcentaje 
+# de aumento de sueldo que ha obtenido comparando su sueldo original y su sueldo después de N años. 
+# Tenga en cuenta que los aumentos obtenidos van a su sueldo. 
 
+# Se le solicita lo siguiente:
+# a.	Cálculo del sueldo después de N años					
+# b.	Calcular el porcentaje de aumento después de N años.
+
+def Ejercicio2():
+    sueldo_inicial = float(input("Ingrese el sueldo inicial del trabajador: "))
+    tipo_trabajador = input("Ingrese el tipo de trabajador (g para gerente, e para empleado): ")
+    while tipo_trabajador.lower() not in ['g', 'e']:
+        print("Tipo de trabajador inválido. Intente nuevamente.")
+        tipo_trabajador = input("Ingrese el tipo de trabajador (g para gerente, e para empleado): ")
+    años = int(input("Ingrese la cantidad de años: "))
+    sueldo_final = calcular_sueldo_despues_de_n_años(sueldo_inicial, tipo_trabajador, años)
+    print(f"El sueldo después de {años} años es: {sueldo_final:.2f}")
+    print("---------------------------------------------------------")
+    porcentaje_aumento = calcular_porcentaje_aumento(sueldo_inicial, sueldo_final)
+    print(f"El porcentaje de aumento después de {años} años es: {porcentaje_aumento:.2f}%")
+
+def calcular_sueldo_despues_de_n_años(sueldo_inicial, tipo_trabajador, años):
+    sueldo = sueldo_inicial
+    for i in range(1, años + 1):
+        if tipo_trabajador.lower() == 'g':
+            if i % 4 == 0:
+                sueldo += sueldo * 0.18
+            else:
+                sueldo += sueldo * 0.14
+        else:   
+            if i % 4 == 0:
+                sueldo += sueldo * 0.12
+            else:
+                sueldo += sueldo * 0.08
+    return sueldo
+
+def calcular_porcentaje_aumento(sueldo_inicial, sueldo_final):
+    aumento = sueldo_final - sueldo_inicial
+    porcentaje_aumento = (aumento / sueldo_inicial) * 100
+    return porcentaje_aumento
+
+Ejercicio2()
