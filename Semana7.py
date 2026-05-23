@@ -73,4 +73,20 @@ def calcular_porcentaje_aumento(sueldo_inicial, sueldo_final):
     porcentaje_aumento = (aumento / sueldo_inicial) * 100
     return porcentaje_aumento
 
-Ejercicio2()
+# Ejercicio2()
+
+# Un banco establece que la clave secreta para acceso a sus cajeros automáticos debe ser un número de 
+# cuatro o más dígitos y que la suma de los dos dígitos que se encuentran en la 3 y 4 posición (posición de centena 
+# y millar) sea par. Determinar si una clave cumple con la condición.
+
+def Ejercicio3():
+    clave = input("Ingrese la clave secreta (4 o más dígitos): ")
+    while not clave.isdigit() or len(clave) < 4:
+        print("La clave debe ser un número de cuatro o más dígitos. Intente nuevamente.")
+        clave = input("Ingrese la clave secreta (4 o más dígitos): ")
+    if (int(clave[2]) + int(clave[3])) % 2 == 0:
+        print("La clave cumple con la condición.")
+    else:
+        print("La clave no cumple con la condición.")
+
+Ejercicio3()
