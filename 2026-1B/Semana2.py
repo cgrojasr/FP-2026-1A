@@ -106,4 +106,105 @@ def Ejercicio1_Reto():
     print("Mitad del decimal:", mitad_decimal)
     print("Resultado de la potencia:", resultado_potencia)
 
-Ejercicio1_Reto()
+# Ejercicio1_Reto()
+
+# Que determine el Área de un circulo
+def Ejercicio2():
+    import math
+    radio = float(input("Ingrese el radio del círculo: "))
+    area = round(math.pi * (radio ** 2), 2)
+    print(f"El área del círculo es: {area}")
+
+# Ejercicio2()
+
+# Que teniendo como dato una hora expresada en segundos (t), 
+# nos calcule y muestre la cantidad de horas, minutos y segundos contenidos en dicha hora. Por ejemplo, 
+# si t fuese 3879, entonces el número de horas sería 1, los minutos serían 4 y los segundos serían 
+
+def Ejercicio6():
+    t = int(input("Ingrese la cantidad de segundos: "))
+    horas = t // 3600
+    minutos = (t % 3600) // 60
+    segundos = t % 60
+    print(f"Horas: {horas}, Minutos: {minutos}, Segundos: {segundos}")
+
+# Ejercicio6()
+
+# Que lea las coordenadas (x1, y1) y (x2, y2) de dos puntos y nos determine e imprima la distancia 
+# entre ellos y el ángulo que forma la recta que los une con la horizontal.
+def Ejercicio8():
+    import math
+    x1 = int(input("Ingrese la coordenada x1: "))
+    y1 = int(input("Ingrese la coordenada y1: "))
+    x2 = int(input("Ingrese la coordenada x2: "))
+    y2 = int(input("Ingrese la coordenada y2: "))
+    
+    distancia = round(math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2), 2)
+    angulo = round(math.degrees(math.atan2(y2 - y1, x2 - x1)), 2)
+
+    print(f"Distancia entre los puntos: {distancia}")
+    print(f"Ángulo con la horizontal: {angulo} grados")
+
+# Ejercicio8()
+
+
+def Ejercicio2_Reto():
+    # Ejercicio 2 - Desglose de tiempo
+    texto_segundos = input("Ingrese la cantidad de segundos: ")
+
+    # Conversión
+    segundos_totales = int(texto_segundos)
+
+    if segundos_totales <= 0:
+        print("Error: el valor debe ser mayor que cero.")
+    else:
+        horas = segundos_totales // 3600
+        minutos = (segundos_totales % 3600) // 60
+        segundos = segundos_totales % 60
+
+        # Conversión a texto para construir el mensaje
+        mensaje = "El tiempo es " + str(horas) + " horas, " + str(minutos) + " minutos y " + str(segundos) + " segundos."
+
+        print(mensaje)
+
+# Ejercicio2_Reto()
+
+# Que solicite la temperatura en grados Celsius y la convierta a grados Fahrenheit.
+def Ejercicio3():
+    celsius = float(input("Ingrese la temperatura en grados Celsius: "))
+    fahrenheit = round((celsius * 9/5) + 32, 2)
+    print(f"La temperatura en grados Fahrenheit es: {fahrenheit}")
+
+# Ejercicio3()
+
+# Que teniendo como dato una hora expresada en segundos (t), nos calcule y muestre la cantidad de horas, 
+# minutos y segundos contenidos en dicha hora. Por ejemplo, si t fuese 3879, entonces el número de horas sería 1, 
+# los minutos serían 4 y los segundos serían 
+
+def Ejercicio6():
+    t = int(input("Ingrese la cantidad de segundos: "))
+    horas = t // 3600
+    minutos = (t % 3600) // 60
+    segundos = t % 60
+    print(f"Horas: {horas}, Minutos: {minutos}, Segundos: {segundos}")
+
+# Ejercicio6()
+
+# Que lea las coordenadas (x1, y1) y (x2, y2) de dos puntos y nos determine e imprima la distancia 
+# entre ellos y el ángulo que forma la recta que los une con la horizontal.
+
+def Ejercicio8():
+    import math
+    x1 = int(input("Ingrese la coordenada x1: "))
+    y1 = int(input("Ingrese la coordenada y1: "))
+    x2 = int(input("Ingrese la coordenada x2: "))
+    y2 = int(input("Ingrese la coordenada y2: "))
+    
+    distancia = round(math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2), 2)
+    angulo = round(math.degrees(math.atan2(y2 - y1, x2 - x1)), 2)
+
+    print(f"Distancia entre los puntos: {distancia}")
+    print(f"Ángulo con la horizontal: {angulo} grados")
+
+Ejercicio8()
+
