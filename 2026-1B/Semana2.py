@@ -206,5 +206,46 @@ def Ejercicio8():
     print(f"Distancia entre los puntos: {distancia}")
     print(f"Ángulo con la horizontal: {angulo} grados")
 
-Ejercicio8()
+# Ejercicio8()
+
+def Ejercicio3_Reto():
+    # Ejercicio 3 - Calculadora Científica Básica
+    texto_a = input("Ingrese el primer número (entero o decimal): ")
+    texto_b = input("Ingrese el segundo número (entero o decimal): ")
+
+    # Conversión
+    a = float(texto_a)
+    b = float(texto_b)
+
+    # Operaciones
+    suma = a + b
+    resta = a - b
+    multiplicacion = a * b
+    division = a / b
+    potencia = a ** b
+    promedio = (a + b) / 2
+    diferencia_absoluta = abs(a - b)
+
+    # Impresión de resultados
+    print("Suma:", suma)
+    print("Resta:", resta)
+    print("Multiplicación:", multiplicacion)
+    print("División:", division)
+    print("Potencia:", potencia)
+    print("Promedio:", promedio)
+    print("Diferencia absoluta:", diferencia_absoluta)
+
+    # Conversión a entero para mostrar cambios
+    print("Suma convertida a entero:", int(suma))
+    print("División convertida a entero:", int(division))
+
+    # Comparación final
+    if a > b:
+        print("El primer número es mayor.")
+    elif a < b:
+        print("El segundo número es mayor.")
+    else:
+        print("Ambos números son iguales.")
+
+Ejercicio3_Reto()
 
