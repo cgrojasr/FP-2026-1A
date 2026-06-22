@@ -213,5 +213,172 @@ def validar_acceso():
         print("Rol no reconocido")
 
 # Llamada al método
-validar_acceso()    
+# validar_acceso()
 
+
+# Dados dos números, nos indique quien es mayor, menor o si son iguales.
+def Ejercicio1():
+    try:
+        num1 = float(input("Ingrese el primer número: "))
+        num2 = float(input("Ingrese el segundo número: "))
+    except ValueError:
+        print("Error: El valor ingresado no es un número válido.")
+        return
+
+    if num1 > num2:
+        print(f"{num1} es mayor que {num2}")
+    elif num1 < num2:
+        print(f"{num1} es menor que {num2}")
+    else:
+        print("Ambos números son iguales")
+
+
+# Ejercicio1()
+
+# Que reciba un numero y muestre un mensaje indicando si es par o no.
+def Ejercicio2():
+    try:
+        numero = int(input("Ingrese un número entero: "))
+    except ValueError:
+        print("Error: El valor ingresado no es un número entero válido.")
+        return
+
+    if numero % 2 == 0:
+        print(f"{numero} es un número par")
+    else:
+        print(f"{numero} es un número impar")
+
+# Ejercicio2()
+
+# Una empresa de software vende aplicaciones para celulares (iPhone y Android) y 
+# requiere un programa que genere el resumen por cada venta realizada.
+# Los productos que vende dicha empresa son:
+
+# Tipo	Producto	Tipo de Celular	Precio x unidad
+# O	    Oficina	    iPhone	        50.60
+#                   Android	        20.30
+# J	    Juegos	    iPhone	        90.80
+#                   Android	        40.50
+# U	    Utilitarios	iPhone	        60.50
+#                   Android	        30.60
+
+# Asimismo, el programa solicita la cantidad de aplicaciones que el cliente va a comprar.
+# Se le solicita que elabore un programa en Ruby que reciba como datos el tipo de producto, 
+# el tipo de celular (I: iPhone; A: Android) y la cantidad de unidades que el cliente comprará y 
+# nos determine e imprima el monto que deberá pagar este.
+# Debe validar los datos de entrada para una correcta ejecución de su programa.
+
+def Ejercicio5_III():
+    tipo_producto = input("Ingrese el tipo de producto (O: Oficina, J: Juegos, U: Utilitarios): ")
+
+    if tipo_producto.upper() not in ["O", "J", "U"]:
+        print("Error: Tipo de producto no válido. Debe ser 'O', 'J' o 'U'.")
+        return
+    
+    tipo_celular = input("Ingrese el tipo de celular (I: iPhone, A: Android): ")
+
+    if tipo_celular.upper() not in ["I", "A"]:
+        print("Error: Tipo de celular no válido. Debe ser 'I' o 'A'.")
+        return
+
+    cantidad_unidades = input("Ingrese la cantidad de unidades que comprará: ")
+
+    try:
+        cantidad_unidades = int(cantidad_unidades)
+        if cantidad_unidades < 0:
+            print("Error: La cantidad de unidades no puede ser negativa.")
+            return
+    except ValueError:
+        print("Error: La cantidad de unidades debe ser un número entero.")
+        return
+
+    if tipo_producto.upper() == "O":
+        if tipo_celular.upper() == "I":
+            precio_por_unidad = 50.60
+        elif tipo_celular.upper() == "A":
+            precio_por_unidad = 20.30
+        else:
+            print("Error: Tipo de celular no válido.")
+            return
+    elif tipo_producto.upper() == "J":
+        if tipo_celular.upper() == "I":
+            precio_por_unidad = 90.80
+        elif tipo_celular.upper() == "A":
+            precio_por_unidad = 40.50
+        else:
+            print("Error: Tipo de celular no válido.")
+            return
+    elif tipo_producto.upper() == "U":
+        if tipo_celular.upper() == "I":
+            precio_por_unidad = 60.50
+        elif tipo_celular.upper() == "A":
+            precio_por_unidad = 30.60
+        else:
+            print("Error: Tipo de celular no válido.")
+            return
+    else:
+        print("Error: Tipo de producto no válido.")
+        return
+
+    monto_total = precio_por_unidad * cantidad_unidades
+    print(f"El monto total a pagar es: {round(monto_total, 2)} soles")
+
+# Ejercicio5_III()
+
+# --------------------------------------------------------
+# RETO 3 - Clasificador de Riesgo de Salud (con input)
+# --------------------------------------------------------
+
+def clasificar_riesgo():
+    edad = input("Ingrese la edad del paciente: ")
+    try:
+        edad = int(edad)
+        if edad < 0:
+            print("Error: La edad no puede ser negativa.")
+            return
+    except ValueError:
+        print("Error: La edad debe ser un número entero.")
+        return
+
+    imc = input("Ingrese el IMC del paciente: ")
+    try:
+        imc = float(imc)
+        if imc < 0:
+            print("Error: El IMC no puede ser negativo.")
+            return
+    except ValueError:
+        print("Error: El IMC debe ser un número.")
+        return
+
+    enfermedad = input("¿Tiene enfermedad preexistente? (S/N): ")
+    if enfermedad.upper() == "S":
+        enfermedad_bool = True
+    elif enfermedad.upper() == "N":
+        enfermedad_bool = False
+    else:
+        print("Error: Respuesta no válida para enfermedad preexistente. Debe ser 'S' o 'N'.")
+        return
+    
+    actividad = input("¿Realiza actividad física regular? (S/N): ")
+    if actividad.upper() == "S":
+        actividad_bool = True
+    elif actividad.upper() == "N":
+        actividad_bool = False
+    else:
+        print("Error: Respuesta no válida para actividad física regular. Debe ser 'S' o 'N'.")
+        return
+
+    if edad >= 60 or imc >= 30 or (enfermedad_bool and not actividad_bool):
+        print("Clasificación: Riesgo Alto")
+
+    elif (40 <= edad <= 59) or (25 <= imc <= 29) or (enfermedad_bool and actividad_bool):
+        print("Clasificación: Riesgo Medio")
+
+    elif edad < 40 and imc < 25 and not enfermedad_bool:
+        print("Clasificación: Riesgo Bajo")
+
+    else:
+        print("Clasificación: Riesgo Indeterminado")
+
+# Llamada al método
+clasificar_riesgo()
