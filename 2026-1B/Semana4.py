@@ -111,6 +111,93 @@ def reto1():
     print("Vendedor con más días superando 10 ventas:", vendedor_mayor_dias)
     print("Días:", mayor_dias_superados)
 
-reto1()
+# reto1()
 
+# Una empresa tiene como reglamento dar aumento de sueldo a sus trabajadores todos los años, el porcentaje de 
+# aumento está dado de acuerdo al tipo de trabajador: Gerente (g) o empleado (e). Los gerentes reciben un aumento 
+# del 14% anual y los empleados reciben el 8% anual. Cada 4 años en vez de 14% reciben 18% y en vez de 8% reciben 12% 
+# (dependiendo del tipo de trabajador). Desarrollar los módulos que determinen el sueldo que tendrá un trabajador después 
+# de N años y el porcentaje de aumento de sueldo que ha obtenido comparando su sueldo original y su sueldo después de N años. 
+# Tenga en cuenta que los aumentos obtenidos van a su sueldo. 
+#  
+# Se le solicita lo siguiente:
+# Calculo del sueldo después de N años					
+# Calcular el porcentaje de aumento después de N años.				
+# Calcular la suma del sueldo de un gerente y de un empleado después de N años.
 
+def aumneto_sueldo():
+    # tipo_trabajador = input("Ingrese el tipo de trabajador (g para gerente, e para empleado): ").lower()
+    sueldo_gerente = float(input("Ingrese el sueldo inicial del gerente: "))
+    sueldo_empleado = float(input("Ingrese el sueldo inicial del empleado: "))
+    n_anios = int(input("Ingrese la cantidad de años a calcular: "))
+
+    sueldo_actual_gerente = sueldo_gerente
+    sueldo_actual_empleado = sueldo_empleado
+
+    for anio in range(1, n_anios + 1):
+        if anio % 4 == 0:
+            aumento_gerente = 0.18
+            aumento_empleado = 0.12
+        else:
+            aumento_gerente = 0.14
+            aumento_empleado = 0.08
+
+        sueldo_actual_gerente += sueldo_actual_gerente * aumento_gerente
+        sueldo_actual_empleado += sueldo_actual_empleado * aumento_empleado
+
+    porcentaje_aumento_gerente = ((sueldo_actual_gerente - sueldo_gerente) / sueldo_gerente) * 100
+    porcentaje_aumento_empleado = ((sueldo_actual_empleado - sueldo_empleado) / sueldo_empleado) * 100
+
+    print(f"\nSueldo después de {n_anios} años: {sueldo_actual_gerente:.2f} soles")
+    print(f"Porcentaje de aumento después de {n_anios} años: {porcentaje_aumento_gerente:.2f}%")
+    print(f"\nSueldo después de {n_anios} años: {sueldo_actual_empleado:.2f} soles")
+    print(f"Porcentaje de aumento después de {n_anios} años: {porcentaje_aumento_empleado:.2f}%")
+    print(f"\nSuma del sueldo de un gerente y un empleado después de {n_anios} años: {sueldo_actual_gerente + sueldo_actual_empleado:.2f} soles")
+
+# aumneto_sueldo()
+
+# --------------------------------------------------------
+# RETO 2 - Procesamiento de número de hasta 9 dígitos
+# --------------------------------------------------------
+
+def reto2():
+    numero = input("Ingrese un número de hasta 9 dígitos: ")
+
+    # Validación con WHILE
+    while len(numero) > 9 or not numero.isdigit():
+        print("Error: debe ingresar un número válido de máximo 9 dígitos.")
+        numero = input("Ingrese un número de hasta 9 dígitos: ")
+
+    num = int(numero)
+
+    contador_pares = 0
+    contador_impares = 0
+    contador_mayores_5 = 0
+    suma_digitos = 0
+    cantidad_digitos = 0
+
+    while num > 0:
+        digito = num % 10
+        suma_digitos += digito
+        cantidad_digitos += 1
+
+        if digito % 2 == 0:
+            contador_pares += 1
+        else:
+            contador_impares += 1
+
+        if digito > 5:
+            contador_mayores_5 += 1
+
+        num = num // 10
+
+    promedio = round(suma_digitos / cantidad_digitos, 2)
+
+    print("\nResultados:")
+    print("Dígitos pares:", contador_pares)
+    print("Dígitos impares:", contador_impares)
+    print("Dígitos mayores que 5:", contador_mayores_5)
+    print("Suma de dígitos:", suma_digitos)
+    print("Promedio de dígitos:", promedio)
+
+reto2()
