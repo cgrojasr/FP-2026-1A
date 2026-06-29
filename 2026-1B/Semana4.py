@@ -29,15 +29,22 @@ def supermercadoUNO():
 
     # Generar un numero de hasta 9 dígitos de manera aleatoria
     import random
-    numero = str(random.randint(100000000, 999999999))
+    numero = random.randint(1, 999999999)
     
     # Verificar que el número tenga como máximo 9 dígitos
-    if len(numero) > 9 or not numero.isdigit():
-        print("El número debe tener como máximo 9 dígitos y ser un número válido.")
-        return
+    # if len(numero) > 9 or not numero.isdigit():
+    #     print("El número debe tener como máximo 9 dígitos y ser un número válido.")
+    #     return
     
     # Contar la cantidad de dígitos '1' en el número
-    cantidad_unos = numero.count('1')
+    # cantidad_unos = numero.count('1')
+    cantidad_unos = 0
+    numero_str = str(numero)  # Variable temporal para no modificar el número original
+    while numero > 0:
+        digito = numero % 10
+        if digito == 1:
+            cantidad_unos += 1
+        numero //= 10
     
     # Calcular el descuento basado en la cantidad de unos
     descuento_por_unos = cantidad_unos * (monto_compra * 0.01)
@@ -52,7 +59,7 @@ def supermercadoUNO():
     importe_a_pagar = monto_compra - descuento_total
     
     # Mostrar los resultados
-    print(f"Número extraído del papel: {numero}")
+    print(f"Número extraído del papel: {numero_str}")
     print(f"Cantidad de dígitos '1': {cantidad_unos}")
     print(f"Descuento por unos: {descuento_por_unos:.2f} soles")
     print(f"Descuento adicional: {descuento_adicional:.2f} soles")
@@ -200,4 +207,82 @@ def reto2():
     print("Suma de dígitos:", suma_digitos)
     print("Promedio de dígitos:", promedio)
 
-reto2()
+# reto2()
+
+# ----------------------------------------------
+# RETO 3 - Simulación de Cajero Automático
+# ----------------------------------------------
+
+def cajero_automatico():
+    saldo = float(input("Ingrese su saldo inicial: "))
+    historial = []
+
+    opcion = 0
+
+    while opcion != 4:
+        print("\n--- MENÚ DEL CAJERO ---")
+        print("1. Depositar")
+        print("2. Retirar")
+        print("3. Mostrar historial")
+        print("4. Salir")
+
+        opcion = int(input("Seleccione una opción: "))
+
+        if opcion == 1:
+            monto = float(input("Ingrese monto a depositar: "))
+            if monto > 0:
+                saldo += monto
+                historial.append("Depósito: " + str(monto))
+                print("Depósito realizado. Saldo actual:", saldo)
+            else:
+                print("Monto inválido.")
+
+        elif opcion == 2:
+            monto = float(input("Ingrese monto a retirar: "))
+            if monto > 0 and monto <= saldo:
+                saldo -= monto
+                historial.append("Retiro: " + str(monto))
+                print("Retiro realizado. Saldo actual:", saldo)
+            else:
+                print("Monto inválido o insuficiente.")
+
+        elif opcion == 3:
+            print("\n--- HISTORIAL DE OPERACIONES ---")
+            total_depositos = 0
+            total_retiros = 0
+
+            for operacion in historial:
+                print(operacion)
+                if "Depósito" in operacion:
+                    total_depositos += 1
+                else:
+                    total_retiros += 1
+
+            print("Total de depósitos:", total_depositos)
+            print("Total de retiros:", total_retiros)
+
+        elif opcion == 4:
+            print("Saliendo del sistema...")
+
+        else:
+            print("Opción inválida.")
+
+    print("\n--- RESUMEN FINAL ---")
+    print("Saldo final:", saldo)
+    print("Total de operaciones realizadas:", len(historial))
+
+    monto_total_depositado = 0
+    monto_total_retirado = 0
+
+    for operacion in historial:
+        partes = operacion.split(": ")
+        monto = float(partes[1])
+        if "Depósito" in operacion:
+            monto_total_depositado += monto
+        else:
+            monto_total_retirado += monto
+
+    print("Monto total depositado:", monto_total_depositado)
+    print("Monto total retirado:", monto_total_retirado)
+
+cajero_automatico()
