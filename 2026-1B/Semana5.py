@@ -221,6 +221,63 @@ def reto1():
             print("Lote:", lote)
             print("Almacén:", almacen)
 
-reto1()
+# reto1()
 
+#RETOS - 2
+# Dado un arreglo de nombres:
+# nombres = ["Carlos", "Ana", "Felipe", "María", "Jonathan", "Sol", "Pedro"]
+# El programa debe:
 
+# Recorrer el arreglo usando un ciclo.
+
+# Para cada nombre:
+# 1. Obtener la primera letra
+# 2. Obtener la última letra
+# 3. Obtener la subcadena formada por los primeros 3 caracteres (si el nombre tiene menos de 3 
+#    caracteres, mostrar el nombre completo)
+# 4. Contar cuántos nombres empiezan con vocal.
+# 5. Contar cuántos nombres tienen más de 5 caracteres.
+# 6. Construir un nuevo arreglo con los nombres que contienen la letra “a” o “A”.
+# Mostrar todos los resultados.
+
+# ---------------------------------------------------------
+# EJERCICIO 2 - Análisis de nombres en un arreglo
+# ---------------------------------------------------------
+
+def reto2():
+    nombres = ["Carlos", "Ana", "Felipe", "María", "Jonathan", "Sol", "Pedro"]
+
+    vocales = "AEIOUaeiou"
+    contador_vocal = 0
+    contador_mayores_5 = 0
+    nombres_con_a = []
+
+    for nombre in nombres:
+        primera = nombre[0]
+        ultima = nombre[-1]
+
+        if len(nombre) >= 3:
+            subcadena = nombre[0:3]
+        else:
+            subcadena = nombre
+
+        print("\nNombre:", nombre)
+        print("Primera letra:", primera)
+        print("Última letra:", ultima)
+        print("Subcadena (primeros 3 caracteres):", subcadena)
+
+        if primera in vocales:
+            contador_vocal += 1
+
+        if len(nombre) > 5:
+            contador_mayores_5 += 1
+
+        if "a" in nombre.lower():
+            nombres_con_a.append(nombre)
+
+    print("\n--- Resultados Finales ---")
+    print("Nombres que empiezan con vocal:", contador_vocal)
+    print("Nombres con más de 5 caracteres:", contador_mayores_5)
+    print("Nombres que contienen la letra 'a':", nombres_con_a)
+
+reto2()
