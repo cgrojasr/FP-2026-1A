@@ -280,4 +280,105 @@ def reto2():
     print("Nombres con más de 5 caracteres:", contador_mayores_5)
     print("Nombres que contienen la letra 'a':", nombres_con_a)
 
-reto2()
+# reto2()
+
+# 🧠 Ejercicio 3 — Sistema de Etiquetado Complejo para Almacén
+# Enunciado
+# Una empresa genera etiquetas con el siguiente formato:
+# PPCCNNVV
+
+# Donde:
+# PP = país (2 letras)
+# CC = categoría (2 letras)
+# NN = cantidad de productos (2 dígitos)
+# VV = costo de almacenamiento (2 dígitos)
+
+# Ejemplos:
+# PEEL1505
+# MXRO2302
+# CLAL9908
+
+# El programa debe:
+# Recibir una lista de etiquetas.
+
+# Crear 3 subprogramas:
+# productos_por_pais(pais) → devuelve la suma total de productos de ese país.
+# mayor_cantidad(pais) → devuelve el mayor NN encontrado para ese país.
+# costo_total(pais) → devuelve la suma de todos los costos (NN × VV) de ese país.
+
+# Cada subprograma debe:
+# Recorrer la lista
+# Extraer subcadenas:
+# país → etiqueta[0:2]
+# categoría → etiqueta[2:4]
+# cantidad → etiqueta[4:6]
+# costo → etiqueta[6:8]
+
+# Convertir cantidad y costo a enteros
+# Mostrar los resultados para un país ingresado por el usuario.
+
+# ---------------------------------------------------------
+# EJERCICIO 3 - Sistema de Etiquetado Complejo
+# ---------------------------------------------------------
+
+def reto3():
+    etiquetas = [
+        "PEEL1505",
+        "MXRO2302",
+        "CLAL9908",
+        "PEAL1203",
+        "MXEL4507",
+        "PERO3304",
+        "CLRO2201",
+        "PEEL1506",
+        "MXAL2305",
+        "CLRO9909",
+        "PEAL1204",
+        "MXEL4508",
+        "PERO3305",
+        "CLRO2202",
+        "PEEL1507",
+        "MXAL2306",
+        "CLRO9910",
+        "PEAL1205",
+        "MXEL4509",
+        "PERO3306",
+        "CLRO2203",
+        "PEEL1508",
+        "MXAL2307",
+    ]
+
+    def productos_por_pais(pais):
+        total = 0
+        for etiqueta in etiquetas:
+            if etiqueta[0:2] == pais:
+                cantidad = int(etiqueta[4:6])
+                total += cantidad
+        return total
+
+    def mayor_cantidad(pais):
+        mayor = -1
+        for etiqueta in etiquetas:
+            if etiqueta[0:2] == pais:
+                cantidad = int(etiqueta[4:6])
+                if cantidad > mayor:
+                    mayor = cantidad
+        return mayor
+
+    def costo_total(pais):
+        total = 0
+        for etiqueta in etiquetas:
+            if etiqueta[0:2] == pais:
+                cantidad = int(etiqueta[4:6])
+                costo = int(etiqueta[6:8])
+                total += cantidad * costo
+        return total
+
+    pais_busqueda = input("Ingrese el país a consultar (PE, MX, CL): ").upper()
+
+    print("\n--- Resultados para el país", pais_busqueda, "---")
+    print("Total de productos:", productos_por_pais(pais_busqueda))
+    print("Mayor cantidad:", mayor_cantidad(pais_busqueda))
+    print("Costo total de almacenamiento:", costo_total(pais_busqueda))
+
+reto3()
